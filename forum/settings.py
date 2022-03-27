@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'django_filters',
     'django_rest_passwordreset',
+    'drf_yasg',
 
     'applications.account',
     'applications.question',
