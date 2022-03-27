@@ -2,7 +2,7 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 
 from applications.question.models import Question
-from applications.question.permissions import IsQuestionAuthor
+from applications.question.permissions import IsAuthor
 from applications.question.serializers import QuestionSerializer
 
 
@@ -23,12 +23,10 @@ class QuestionCreateView(generics.CreateAPIView):
 class QuestionUpdateView(generics.UpdateAPIView):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
-    permission_classes = [IsAuthenticated, IsQuestionAuthor, ]
+    permission_classes = [IsAuthenticated, IsAuthor, ]
 
 
 class QuestionDeleteView(generics.DestroyAPIView):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
-    permission_classes = [IsAuthenticated, IsQuestionAuthor, ]
-
-
+    permission_classes = [IsAuthenticated, IsAuthor, ]

@@ -25,6 +25,7 @@ INSTALLED_APPS = [
 
     'applications.account',
     'applications.question',
+    'applications.comments',
 ]
 
 MIDDLEWARE = [
