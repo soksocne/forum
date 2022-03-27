@@ -5,9 +5,10 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework import status
+from rest_framework import status, generics
 
 from applications.account.serializers import RegisterSerializer, LoginSerializer
+from applications.question.permissions import IsAuthor
 
 
 class RegisterView(APIView):
@@ -40,3 +41,4 @@ class LogoutView(APIView):
         user = request.user
         Token.objects.filter(user=user).delete()
         return Response('Successfully logged out!', status=status.HTTP_200_OK)
+
