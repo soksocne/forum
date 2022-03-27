@@ -2,7 +2,14 @@ from rest_framework import serializers
 
 from applications.comments.models import Comments
 from applications.comments.serializers import CommentsSerializer
-from applications.question.models import Question
+from applications.question.models import Question, Like
+
+
+class LikeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Like
+        fields = '__all__'
 
 
 class QuestionSerializer(serializers.ModelSerializer):
@@ -26,4 +33,5 @@ class QuestionSerializer(serializers.ModelSerializer):
             rep['total_rating'] = 0
         rep['comment'] = CommentsSerializer(Comments.objects.filter(question=instance.id),
                                             many=True).data
+        rep['like'] = instance.like.filter(like=True).count()
         return rep

@@ -13,3 +13,14 @@ class Question(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+                             related_name='like')
+    question = models.ForeignKey(Question, on_delete=models.CASCADE,
+                                 related_name='like')
+    like = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.like
