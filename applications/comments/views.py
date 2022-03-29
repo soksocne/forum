@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from applications.comments.models import Comments
 from applications.comments.serializers import CommentsSerializer
-from applications.question.permissions import IsAuthor
+from applications.comments.permissions import IsAuthor
 
 
 class CommentsFilter(rest_framework.FilterSet):
